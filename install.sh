@@ -4,9 +4,8 @@ set -e
 CLAUDE_DIR="$HOME/.claude"
 
 if [ -d "$CLAUDE_DIR" ]; then
-  backup="$HOME/.claude.backup.$(date +%s)"
-  mv "$CLAUDE_DIR" "$backup"
-  echo "Backed up existing config to $backup"
+  mv "$CLAUDE_DIR" "$HOME/.claude-old"
+  echo "Moved existing config to ~/.claude-old"
 fi
 
 mkdir -p "$CLAUDE_DIR"/{agents,commands,rules}
