@@ -1,4 +1,4 @@
-# claude-config
+# claude-config-tdd
 
 [![Claude Code](https://img.shields.io/badge/Claude_Code-config-D97757?logo=anthropic&logoColor=white)](https://claude.com/claude-code)
 [![Shell](https://img.shields.io/badge/shell-bash-4EAA25?logo=gnubash&logoColor=white)](install.sh)
@@ -17,8 +17,8 @@ Opinionated [Claude Code](https://claude.com/claude-code) setup: TDD workflow, s
 ## Install
 
 ```bash
-git clone https://github.com/eugeek/claude-config.git
-cd claude-config
+git clone https://github.com/eugeek/claude-config-tdd.git
+cd claude-config-tdd
 ./install.sh
 ```
 
@@ -27,10 +27,7 @@ Existing `~/.claude` is moved to `~/.claude-old`.
 Add to `~/.zshrc`:
 
 ```bash
-export GITHUB_TOKEN="..."
-export BRAVE_API_KEY="..."
 export CONTEXT7_API_KEY="..."
-export POSTGRES_CONNECTION_STRING="..."
 ```
 
 ## Workflow
@@ -90,6 +87,4 @@ quick: fix typo in button label
 
 ## API keys
 
-- GitHub — https://github.com/settings/tokens
-- Context7 — https://console.upstash.com/
-- Brave Search — https://brave.com/search/api/
+- Context7 — https://context7.com/dashboard

@@ -19,7 +19,4 @@ cp mcp.json   "$CLAUDE_DIR/mcp.json"
 
 echo "Done. Add to ~/.zshrc or ~/.bashrc:"
 echo ""
-echo "  export GITHUB_TOKEN=\"...\""
-echo "  export BRAVE_API_KEY=\"...\""
 echo "  export CONTEXT7_API_KEY=\"...\""
-echo "  export POSTGRES_CONNECTION_STRING=\"...\""
