@@ -1,25 +1,8 @@
-# Fix Command
+# Fix
 
-Auto-fix issues found by reviewer.
+Invoke `reviewer` sub-agent, then auto-fix safe issues.
 
-Args: $ARGUMENTS (optional: file path)
+Args: $ARGUMENTS (optional file path)
 
-## Process:
-
-1. Run `/review` first to find issues
-2. Use `reviewer` agent to analyze
-3. Auto-fix safe issues:
-   - ✅ Remove unnecessary comments
-   - ✅ Fix formatting
-   - ✅ Apply DRY refactoring
-   - ✅ Rename variables (poor names)
-   - ✅ Extract magic numbers to constants
-   - ⚠️ Ask before complex refactors
-
-4. Report what was fixed
-
-## Example:
-```bash
-/fix                    # Fix all safe issues
-/fix src/api/users.ts  # Fix specific file
-```
+Auto-fix: obvious comments, DRY violations, poor names, magic numbers.
+Ask before: structural refactors.

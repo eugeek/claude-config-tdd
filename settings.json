@@ -1,12 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  
+
   "permissions": {
     "allow": [
       "Bash(npm *)",
       "Bash(yarn *)",
       "Bash(pnpm *)",
       "Bash(bun *)",
+      "Bash(npx *)",
       "Bash(ls *)",
       "Bash(cat *)",
       "Bash(grep *)",
@@ -21,25 +22,43 @@
       "Bash(git show *)",
       "Bash(git branch)",
       "Bash(git remote -v)",
+      "Bash(vitest *)",
+      "Bash(jest *)",
+      "Bash(pytest *)",
+      "Bash(python -m pytest *)",
+      "Bash(python -m mypy *)",
+      "Bash(tsc *)",
+      "Bash(mypy *)",
+      "Bash(ruff *)",
+      "Bash(eslint *)",
+      "Bash(biome *)",
+      "Bash(flake8 *)",
       "Read(**/*)",
       "Read(.env.example)",
       "Write(.env.example)",
       "Edit(.env.example)"
     ],
     "deny": [
-      "Bash(git init *)",
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(git push *)",
       "Bash(git pull *)",
       "Bash(git merge *)",
       "Bash(git rebase *)",
-      "Bash(git checkout *)",
       "Bash(git reset *)",
+      "Bash(git stash *)",
       "Bash(git clone *)",
+      "Bash(rtk git add *)",
+      "Bash(rtk git commit *)",
+      "Bash(rtk git push *)",
+      "Bash(rtk git pull *)",
+      "Bash(rtk git merge *)",
+      "Bash(rtk git rebase *)",
+      "Bash(rtk git reset *)",
+      "Bash(rtk git stash *)",
+      "Bash(rtk git clone *)",
       "Bash(sudo *)",
-      "Bash(rm -rf *)",
-      "Bash(rm -r *)",
+      "Bash(rm *)",
       "Read(**/.env)",
       "Read(.env)",
       "Write(**/.env)",
@@ -48,7 +67,7 @@
       "Edit(.env)"
     ]
   },
-  
+
   "env": {
     "EDITOR": "vim"
   }

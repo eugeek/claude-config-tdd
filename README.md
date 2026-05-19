@@ -1,80 +1,81 @@
-# Claude Code Configuration
+# Claude Code Config
 
-Personal Claude Code setup with agents, commands, rules, and MCP servers.
+## Install (fresh machine)
 
-## Quick Install
 ```bash
-# Backup existing config
-mv ~/.claude ~/.claude.backup 2>/dev/null || true
-
-# Clone and install
 git clone https://github.com/your-username/claude-config.git
 cd claude-config
-
-# Copy files
-mkdir -p ~/.claude/{agents,commands,rules}
-cp agents/* ~/.claude/agents/
-cp commands/* ~/.claude/commands/
-cp rules/* ~/.claude/rules/
-cp settings.json ~/.claude/
-cp mcp.json ~/.mcp.json
+./install.sh
 ```
 
-## Environment Variables
+## Install (already have Claude Code with config)
 
-Add to `~/.zshrc` or `~/.bashrc`:
+Backup your current config first:
+
 ```bash
-# Required for MCP servers
-export GITHUB_TOKEN="ghp_xxxxx"              # GitHub personal access token
-export CONTEXT7_API_KEY="xxxxx"             # Upstash Context7 API key
-export POSTGRES_CONNECTION_STRING="postgresql://user:pass@localhost:5432/db"
-export BRAVE_API_KEY="xxxxx"                # Brave Search API key
+cp -r ~/.claude/agents ~/.claude/agents.bak 2>/dev/null || true
+cp -r ~/.claude/commands ~/.claude/commands.bak 2>/dev/null || true
+cp -r ~/.claude/rules ~/.claude/rules.bak 2>/dev/null || true
+cp ~/.claude/CLAUDE.md ~/.claude/CLAUDE.md.bak 2>/dev/null || true
+cp ~/.claude/settings.json ~/.claude/settings.json.bak 2>/dev/null || true
 ```
 
-Then: `source ~/.zshrc`
+Check what you had — you may want to migrate custom rules:
 
-## What's Included
-
-### Agents
-- **frontend** - React, TypeScript, performance
-- **fullstack** - API integration, end-to-end features
-- **architect** - System design, SOLID, refactoring
-- **qa** - Comprehensive test coverage
-- **reviewer** - Code review, DRY, optimization
-
-### Commands
-- `/review` - Code review with fresh eyes
-- `/test` - Run tests and analyze
-- `/test-new <file>` - Generate tests for file
-
-### Rules
-- Short, direct responses
-- No unnecessary comments in code
-- No auto-generated README/docs
-- Concise plans in Plan mode
-
-### MCP Servers
-- chrome-devtools, context7, github, filesystem
-- postgres, brave-search, puppeteer, git
-
-## Usage
 ```bash
-claude
-
-# Try commands:
-/agents                    # List agents
-/review                    # Review last commit
-/test                      # Run all tests
-/test-new src/utils.ts    # Generate tests
+ls ~/.claude/agents.bak
+ls ~/.claude/rules.bak
 ```
+
+Then install:
+
+```bash
+git clone https://github.com/your-username/claude-config.git
+cd claude-config
+./install.sh
+```
+
+`install.sh` also makes a full timestamped backup of `~/.claude` automatically.
+
+## Environment variables
+
+Add to `~/.zshrc`:
+```bash
+export GITHUB_TOKEN="..."
+export BRAVE_API_KEY="..."
+export CONTEXT7_API_KEY="..."
+export POSTGRES_CONNECTION_STRING="..."
+```
+
+## Workflow
+
+**New feature — Opus + Plan Mode (Shift+Tab):**
+- Complex task → `architect` agent reviews structure first
+- Plan: feature / decomposition + files / result
+
+**Implementation — Sonnet + auto-accept (Shift+Tab twice):**
+1. `qa` agent writes tests (red)
+2. `frontend` / `backend` / both implement (green)
+3. `reviewer` agent reviews
+
+**Quick task (skip TDD):** prefix with `quick:`
+```
+quick: fix typo in button label
+```
+
+## Agents
+- `architect` — structure analysis, plan mode only
+- `frontend` — React, TypeScript, UI
+- `backend` — API, database, auth, server
+- `qa` — writes tests before implementation
+- `reviewer` — reviews after green
 
 ## Permissions
+- Blocked: `git add/commit/push/pull/merge/stash`, `sudo`, `rm`, `.env`
+- Auto-allowed: test runners (vitest, jest, pytest), linters (eslint, ruff, biome), typecheck (tsc, mypy), package managers
+- Everything else: Claude asks
 
-Git operations (add, commit, push) are **blocked** by default.
-`.env` files are **protected** (read/write denied).
-
-## Get API Keys
-
-- **GitHub Token**: https://github.com/settings/tokens
-- **Context7**: https://console.upstash.com/
-- **Brave Search**: https://brave.com/search/api/
+## API Keys
+- GitHub: https://github.com/settings/tokens
+- Context7: https://console.upstash.com/
+- Brave Search: https://brave.com/search/api/
