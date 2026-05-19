@@ -1,16 +1,16 @@
 # TDD Workflow
 
 ## Plan mode (Opus)
-1. If task introduces a new module/service or touches >3 unrelated files → use Agent tool to spawn `architect` sub-agent
+1. If task introduces a new module/service or touches >3 unrelated files → spawn `architect` sub-agent
 2. Produce plan: feature description / decomposition + files / expected result
 
 ## Implementation (Sonnet, auto-accept)
-1. Read — read all files that will be touched, detect language and test conventions
-2. Use Agent tool to spawn `qa` sub-agent — writes tests (functional + non-functional) + stubs, confirm tests fail (red)
-3. Use Agent tool to spawn `frontend`, `backend`, or both — minimal implementation to pass tests
+1. Read all files that will be touched, detect language and test conventions
+2. Spawn `qa` — writes tests (functional + non-functional) + stubs, confirm tests fail (red)
+3. Spawn `frontend` / `backend` / both — minimal implementation to pass tests
 4. Green check — tests + type check + linter must all pass; if failing after 3 attempts — stop and ask user
-5. Use Agent tool to spawn `frontend`/`backend` — refactor, tests must stay green
-6. Use Agent tool to spawn `reviewer` sub-agent — reviews implementation
+5. Refactor in-place — tests must stay green
+6. Spawn `reviewer` — reviews implementation
 7. Summary — files changed + one command to run
 
 ## Agent selection

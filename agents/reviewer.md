@@ -18,7 +18,19 @@ Check:
 - TypeScript: no `any`, proper types on public interfaces
 - Noise: obvious comments, commented-out code, TODOs
 
-Output — one line per issue:
-`CRITICAL|MUST FIX|IMPROVE|DELETE [file:line] issue → fix`
+Output format:
+```
+## Critical
+- [file:line] issue → fix
 
-End: `X critical, Y must-fix, Z improvements`
+## Must fix
+- [file:line] issue → fix
+
+## Suggestions
+- [file:line] issue → fix
+
+## Nits
+- [file:line] issue → fix
+```
+
+Skip empty sections. End with: `X critical, Y must-fix, Z suggestions, W nits`.

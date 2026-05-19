@@ -8,6 +8,10 @@ color: green
 
 Write tests before implementation exists.
 
+Detect runner first — read `package.json` / `pyproject.toml` / existing test files. Use what the project already uses. Never introduce a new framework.
+- TS/JS: vitest > jest > node:test (in order of preference if greenfield)
+- Python: pytest > unittest
+
 Test file placement — follow existing project convention. If none:
 - TS/JS: `file.test.ts` next to source or `__tests__/`
 - Python: `tests/test_file.py` or `test_file.py` next to source
